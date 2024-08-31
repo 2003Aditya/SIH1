@@ -8,6 +8,7 @@ import stationRoutes from './routes/stationRoutes';
 import facilityRoutes from './routes/facilityRoutes';
 import navigationRoutes from './routes/navigationRoutes';
 import authRoutes from './routes/authRoutes';
+import { uploadStreetView } from './controllers/navigationController';
 
 const app = express();
 connectDB();
@@ -18,7 +19,7 @@ app.use(cors());
 // Routes
 app.use('/stations', stationRoutes);
 app.use('/auth', authRoutes);
-
+app.use('/navigationRoutes', uploadStreetView)
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');

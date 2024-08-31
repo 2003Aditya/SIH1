@@ -10,6 +10,7 @@ const db_1 = __importDefault(require("./config/db"));
 // Import routes
 const stationRoutes_1 = __importDefault(require("./routes/stationRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const navigationController_1 = require("./controllers/navigationController");
 const app = (0, express_1.default)();
 (0, db_1.default)();
 // Middleware
@@ -18,6 +19,7 @@ app.use((0, cors_1.default)());
 // Routes
 app.use('/stations', stationRoutes_1.default);
 app.use('/auth', authRoutes_1.default);
+app.use('/navigationRoutes', navigationController_1.uploadStreetView);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');

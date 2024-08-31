@@ -8,5 +8,6 @@ const router = express_1.default.Router();
 // Controller imports
 const navigationController_1 = require("../controllers/navigationController");
 // Routes
-router.get('/:id/navigate', navigationController_1.getNavigation);
+// Apply the multer middleware `uploadStreetViewRoute` before your controller `uploadStreetView`
+router.post('/upload', navigationController_1.uploadStreetViewRoute, navigationController_1.uploadStreetView);
 exports.default = router;
